@@ -12,12 +12,11 @@
 #include <string>
 using namespace std;
 
-using namespace std;
-
 class CEmployee {
 protected:
 	string m_FirstName;
 	string m_LastName;
+	//change to a tm thing to get rid of issues
 	tm m_YearHired;
 	unsigned short m_Salary;
 
