@@ -17,14 +17,27 @@ protected:
     string m_DepartmentName;
     
 public:
-    CManager(const string& firstName, const string& lastName, const unsigned short& yearHired, const unsigned short& salary, const vector<CEmployee*> group, const string departName):CEmployee(firstName, lastName, yearHired, salary){;
+    CManager(const string& firstName, const string& lastName, 
+		const unsigned short& salary, const unsigned short& yearHired, 
+		const string departName, const vector<CEmployee*> group):
+		CEmployee(firstName, lastName, yearHired, salary){;
         m_Group = group;
         m_DepartmentName = departName;
     }
-    
-    CManager() {
-        
+    //Default Constructor
+    CManager():CEmployee() {
+		m_DepartmentName = "";
     }
+	//Copy Constructor
+	CManager(const CManager &CM) {
+		m_FirstName = CM.getFirstName();
+		m_LastName = CM.getLastName();
+		m_YearHired = CM.getYearHired();
+		m_Salary = CM.getSalary();
+		m_DepartmentName = CM.getDepartment();
+	}
+	//Assignment Operator
+	//goes here
     
     string getDepartment() const {
         return m_DepartmentName;
@@ -33,11 +46,11 @@ public:
     void setDepartment(const string departName){
         m_DepartmentName=departName;
     }
-    
-    virtual void print () const {
-        cout << m_FirstName << " " << m_LastName << ": " << m_YearHired <<","<< m_Salary << m_Group << endl;
+    //Manager still needs to display employees
+    virtual void DisplayEmployee() const {
+        cout << m_FirstName << " " << m_LastName << ", Salary: " << m_Salary << "; Hiring Year: " <<
+			m_YearHired << " Department: " << m_DepartmentName << endl;
     }
 };
 
 #endif	/* MANAGER_H */
-
