@@ -10,6 +10,7 @@
 
 #include "Employee.h"
 #include <vector>
+using namespace std;
 
 class CManager: public CEmployee {
 protected:
@@ -17,10 +18,10 @@ protected:
     string m_DepartmentName;
     
 public:
-    CManager(const string& firstName, const string& lastName, 
-		const unsigned short& salary, const unsigned short& yearHired, 
-		const string departName, const vector<CEmployee*> group):
-		CEmployee(firstName, lastName, yearHired, salary){;
+    CManager(const string &firstName, const string &lastName, 
+		const unsigned short &salary, const tm &yearHired, 
+		const string &departName, const vector<CEmployee*> &group):
+		CEmployee(firstName, lastName, salary, yearHired){;
         m_Group = group;
         m_DepartmentName = departName;
     }
@@ -46,10 +47,18 @@ public:
     void setDepartment(const string departName){
         m_DepartmentName=departName;
     }
-    //Manager still needs to display employees
+    //Manager still needs to display employees *Fixed*
+	//need number of sub ordinates and need to fix formatting
+	//Displays Manager Imformation and their subordinates' info
     virtual void DisplayEmployee() const {
         cout << m_FirstName << " " << m_LastName << ", Salary: " << m_Salary << "; Hiring Year: " <<
-			m_YearHired << " Department: " << m_DepartmentName << endl;
+			m_YearHired.tm_year << " Department: " << m_DepartmentName << endl;
+		for (auto E : m_Group)
+		{
+			cout << '\t';
+			cout << m_FirstName << " " << m_LastName << ", Salary: " << m_Salary << "; Hiring Year: " <<
+				m_YearHired.tm_year << " Department: " << m_DepartmentName << endl;
+		}
     }
 };
 

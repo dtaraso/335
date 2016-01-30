@@ -10,18 +10,33 @@
 
 #include "Employee.h"
 #include "Manager.h"
+using namespace std;
 
-class CDatabase : public CEmployee {
+class CDatabase{
 private:
-	vector<CEmployee*> m_Group;
+	vector<CEmployee*> m_Employees;
 public:
+	CDatabase(){}
+	CDatabase(vector<CEmployee*> employees)
+	{
+		m_Employees = employees;
+	}
+	/*
+	CDatabase( CDatabase &CD)
+	{
+		vector<CEmployee>;
+	}
+	*/
 	//Add Employee into database
-	void AddRecord() {
-
+	void AddRecord(CEmployee *CE) {
+		m_Employees.push_back(CE);
 	}
 	//Print out Employees and the Employees they watch over
 	void DisplayRecords() {
-
+		for (auto E : m_Employees) {
+			E->DisplayEmployee();
+			cout << endl;
+		}
 	}
 };
 
