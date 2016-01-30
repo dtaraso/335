@@ -10,18 +10,45 @@
 
 #include "Employee.h"
 #include "Manager.h"
+using namespace std;
 
-class CDatabase : public CEmployee {
+//removed inheritance from employee here
+class CDatabase{
 private:
-	vector<CEmployee*> m_Group;
+	vector<CEmployee*> m_Employees;
 public:
-	//Add Employee into database
-	void AddRecord() {
+	//Not sure if I need this default constructor
+	CDatabase(){}
+	CDatabase(vector<CEmployee*> employees)
+	{
+		m_Employees = employees;
+	}
 
+	//copy constructor
+	CDatabase( CDatabase &CD)
+	{
+		for (auto E : CD.m_Employees)
+		{
+			//feel like this might cause issues since
+			//the pointer is probably getting copied
+			m_Employees.push_back(E);
+		}
+	}
+	//need assignment operator function
+	//
+	
+
+	//Add Employee into database
+	void AddRecord(CEmployee *CE) {
+		m_Employees.push_back(CE);
 	}
 	//Print out Employees and the Employees they watch over
+	//displays all employees and their subordinates
 	void DisplayRecords() {
-
+		for (auto E : m_Employees) {
+			E->DisplayEmployee();
+			cout << endl;
+		}
 	}
 };
 

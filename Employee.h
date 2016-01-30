@@ -10,19 +10,19 @@
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 class CEmployee {
 protected:
 	string m_FirstName;
 	string m_LastName;
-	unsigned short m_YearHired;
+	//change to a tm thing to get rid of issues
+	tm m_YearHired;
 	unsigned short m_Salary;
 
 public:
-	CEmployee(const string firstName, const string lastName, 
-		const unsigned short salary, const unsigned short yearHired) {
+	CEmployee(const string &firstName, const string &lastName, 
+		const unsigned short &salary, const tm &yearHired) {
 		m_FirstName = firstName;
 		m_LastName = lastName;
 		m_YearHired = yearHired;
@@ -30,9 +30,11 @@ public:
 	}
 	//Default Constructor
 	CEmployee() {
+		tm year;
+		year.tm_year = 0000;
 		m_FirstName = "";
 		m_LastName = "";
-		m_YearHired = 0;
+		m_YearHired = year;
 		m_Salary = 0;
 	}
 	//Copy Constructor
@@ -53,7 +55,7 @@ public:
 		return m_LastName;
 	}
 
-	unsigned short getYearHired() const {
+	tm getYearHired() const {
 		return m_YearHired;
 	}
 
@@ -69,7 +71,7 @@ public:
 		m_LastName = lastName;
 	}
 
-	void setYearHired(const unsigned short yearHired) {
+	void setYearHired(const tm yearHired) {
 		m_YearHired = yearHired;
 	}
 
@@ -79,7 +81,7 @@ public:
 
 	virtual void DisplayEmployee() const {
 		cout << m_FirstName << " " << m_LastName << ", Salary: " << m_Salary << "; Hiring Year: " << 
-			m_YearHired<< endl;
+			m_YearHired.tm_year<< endl;
 	}
 
 };
