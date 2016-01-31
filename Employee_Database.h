@@ -12,12 +12,10 @@
 #include "Manager.h"
 using namespace std;
 
-//removed inheritance from employee here
 class CDatabase{
 private:
 	vector<CEmployee*> m_Employees;
 public:
-	//Not sure if I need this default constructor
 	CDatabase(){}
 	CDatabase(vector<CEmployee*> employees)
 	{
@@ -25,22 +23,31 @@ public:
 	}
 
 	//copy constructor
-	CDatabase( CDatabase &CD)
+	CDatabase( CDatabase &db)
 	{
-		for (auto E : CD.m_Employees)
+		if (this != &db)
 		{
-			//feel like this might cause issues since
-			//the pointer is probably getting copied
+			for (auto E : db.m_Employees)
+			{
+				//feel like this might cause issues since
+				//the pointer is probably getting copied
+				m_Employees.push_back(E);
+			}
+		}
+	}
+	//assignment operator
+	CDatabase& operator=(CDatabase &db)
+	{
+		for (auto E : db.m_Employees)
+		{
 			m_Employees.push_back(E);
 		}
 	}
-	//need assignment operator function
-	//
 	
 
 	//Add Employee into database
-	void AddRecord(CEmployee *CE) {
-		m_Employees.push_back(CE);
+	void AddRecord(CEmployee *emp) {
+		m_Employees.push_back(emp);
 	}
 	//Print out Employees and the Employees they watch over
 	//displays all employees and their subordinates

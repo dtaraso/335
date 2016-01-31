@@ -16,12 +16,11 @@ class CEmployee {
 protected:
 	string m_FirstName;
 	string m_LastName;
-	//change to a tm thing to get rid of issues
 	tm m_YearHired;
 	unsigned short m_Salary;
 
 public:
-	CEmployee(const string &firstName, const string &lastName, 
+	CEmployee(const string &firstName, const string &lastName,
 		const unsigned short &salary, const tm &yearHired) {
 		m_FirstName = firstName;
 		m_LastName = lastName;
@@ -32,8 +31,8 @@ public:
 	CEmployee() {
 		tm year;
 		year.tm_year = 0000;
-		m_FirstName = "";
-		m_LastName = "";
+		m_FirstName = "first";
+		m_LastName = "last";
 		m_YearHired = year;
 		m_Salary = 0;
 	}
@@ -45,7 +44,14 @@ public:
 		m_Salary = CE.getSalary();
 	}
 	//Assignment Operator
-	//goes here
+	CEmployee& operator= (const CEmployee &CE) {
+		m_FirstName = CE.getFirstName();
+		m_LastName = CE.getLastName();
+		m_YearHired = CE.getYearHired();
+		m_Salary = CE.getSalary();
+
+		return *this;
+	}
 
 	string getFirstName() const {
 		return m_FirstName;
@@ -80,8 +86,8 @@ public:
 	}
 
 	virtual void DisplayEmployee() const {
-		cout << m_FirstName << " " << m_LastName << ", Salary: " << m_Salary << "; Hiring Year: " << 
-			m_YearHired.tm_year<< endl;
+		cout << m_FirstName << " " << m_LastName << "    Salary: " << m_Salary << "    Hiring Year: " <<
+			m_YearHired.tm_year << endl;
 	}
 
 };
