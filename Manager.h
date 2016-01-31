@@ -12,9 +12,9 @@
 #include <vector>
 using namespace std;
 
+// Manager class inherits from Employee
 class CManager : public CEmployee {
 protected:
-	//Employees managed by manager
 	vector<CEmployee*> m_Group;
 	string m_DepartmentName;
 
@@ -32,7 +32,8 @@ public:
 	}
 	//Copy Constructor
 	CManager(const CManager &CM) {
-		if (this != &CM)
+            //Checks if new object is equal to the old
+            if (this != &CM)
 		{
 			m_FirstName = CM.getFirstName();
 			m_LastName = CM.getLastName();
@@ -44,6 +45,7 @@ public:
 	}
 	//Assignment Operator
 	CManager& operator=(const CManager &CM) {
+            //Checks if new object is equal to the old
 		if (this != &CM)
 		{
 			m_FirstName = CM.getFirstName();
@@ -55,27 +57,28 @@ public:
 		}
 		return *this;
 	}
-
+        // Get Function
 	string getDepartment() const {
 		return m_DepartmentName;
 	}
-
+        // Set Function
 	void setDepartment(const string departName) {
 		m_DepartmentName = departName;
 	}
-
+        // Get Group Function
 	vector<CEmployee*> getGroup() const
 	{
 		return m_Group;
 	}
-
+        // Set Group Function
 	void setGroup(const vector<CEmployee*> group) {
 		m_Group = group;
 	}
-	//Displays Manager Imformation and their subordinates' info
+	//Displays Manager Information and their Employee's info
 	virtual void DisplayEmployee() const {
 		cout << m_FirstName << " " << m_LastName << "    Salary: " << m_Salary << ";    Hiring Year: " <<
 			m_YearHired.tm_year << "     Department: " << m_DepartmentName << "    Subordinates: " << m_Group.size() <<endl;
+                // Goes through items in M_group and displays employee
 		for (auto E : m_Group)
 		{
 			cout << "\tSubordinate:";

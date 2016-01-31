@@ -20,7 +20,7 @@ protected:
 	unsigned short m_Salary;
 
 public:
-	CEmployee(const string &firstName, const string &lastName,
+    	CEmployee(const string &firstName, const string &lastName,
 		const unsigned short &salary, const tm &yearHired) {
 		m_FirstName = firstName;
 		m_LastName = lastName;
@@ -36,22 +36,29 @@ public:
 		m_YearHired = year;
 		m_Salary = 0;
 	}
+
 	//Copy Constructor
 	CEmployee(const CEmployee &CE) {
+            if(this != &CE)
+            {
 		m_FirstName = CE.getFirstName();
 		m_LastName = CE.getLastName();
 		m_YearHired = CE.getYearHired();
 		m_Salary = CE.getSalary();
+            }
 	}
 	//Assignment Operator
-	CEmployee& operator= (const CEmployee &CE) {
-		m_FirstName = CE.getFirstName();
+	CEmployee operator=(const CEmployee &CE) {
+            //Checks if new object is equal to the old 
+            if (this != &CE)
+            {
+                m_FirstName = CE.getFirstName();
 		m_LastName = CE.getLastName();
 		m_YearHired = CE.getYearHired();
 		m_Salary = CE.getSalary();
-
-		return *this;
-	}
+            }
+            return *this;
+        }
 
 	string getFirstName() const {
 		return m_FirstName;
@@ -85,9 +92,10 @@ public:
 		m_Salary = salary;
 	}
 
+        // Displays Employee Information
 	virtual void DisplayEmployee() const {
-		cout << m_FirstName << " " << m_LastName << "    Salary: " << m_Salary << "    Hiring Year: " <<
-			m_YearHired.tm_year << endl;
+		cout << m_FirstName << " " << m_LastName << ", Salary: " << m_Salary << "; Hiring Year: " << 
+			m_YearHired.tm_year<< endl;
 	}
 
 };

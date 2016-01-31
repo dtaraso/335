@@ -12,6 +12,7 @@
 #include "Manager.h"
 using namespace std;
 
+//Database Class
 class CDatabase{
 private:
 	vector<CEmployee*> m_Employees;
@@ -23,35 +24,41 @@ public:
 	}
 
 	//copy constructor
-	CDatabase( CDatabase &db)
+	CDatabase( CDatabase &CD)
 	{
-		if (this != &db)
+            //Checks if new object is equal to the old
+            if(this != &CD)
+            {
+                //Goes through CD and pushes back employees
+		for (auto E : CD.m_Employees)
 		{
-			for (auto E : db.m_Employees)
-			{
-				//feel like this might cause issues since
-				//the pointer is probably getting copied
-				m_Employees.push_back(E);
-			}
+			//Goes through CD and pushes back employees
+			m_Employees.push_back(E);
 		}
+            }
 	}
-	//assignment operator
-	CDatabase& operator=(CDatabase &db)
-	{
-		for (auto E : db.m_Employees)
+	// Assignment Operator
+	CDatabase operator=( CDatabase &CD) {
+            //Checks if new object is equal to the old
+            if(this != &CD)
+            {
+            //Goes through CD and pushes back employees
+            for (auto E : CD.m_Employees)
 		{
 			m_Employees.push_back(E);
 		}
-	}
+            }
+            return *this;
+        }
 	
 
 	//Add Employee into database
-	void AddRecord(CEmployee *emp) {
-		m_Employees.push_back(emp);
+	void AddRecord(CEmployee *CE) {
+		m_Employees.push_back(CE);
 	}
-	//Print out Employees and the Employees they watch over
 	//displays all employees and their subordinates
 	void DisplayRecords() {
+            //Goes through Employees and displays information
 		for (auto E : m_Employees) {
 			E->DisplayEmployee();
 			cout << endl;
