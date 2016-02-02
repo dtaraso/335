@@ -57,7 +57,7 @@ public:
 	    {
 		delete emp;
             }
-            m_Employees.clear()
+            m_Employees.clear();
         }
 
 	//Add Employee into database
