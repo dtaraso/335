@@ -50,7 +50,10 @@ public:
             }
             return *this;
         }
-	
+        
+        ~CDatabase () {
+            delete &CD;
+        }
 
 	//Add Employee into database
 	void AddRecord(CEmployee *CE) {

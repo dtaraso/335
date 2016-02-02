@@ -57,6 +57,10 @@ public:
 		}
 		return *this;
 	}
+        
+        virtual ~CManager () {
+            delete &CM;
+        }
         // Get Function
 	string getDepartment() const {
 		return m_DepartmentName;

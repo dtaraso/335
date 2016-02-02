@@ -59,7 +59,12 @@ public:
             }
             return *this;
         }
-
+        virtual ~CEmployee() {
+            delete m_FirstName;
+            delete m_LastName;
+            delete m_YearHired;
+            delete m_Salary;
+        }
 	string getFirstName() const {
 		return m_FirstName;
 	}
