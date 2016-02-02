@@ -53,6 +53,10 @@ public:
         
         ~CDatabase () {
             //delete &CD;
+            for (auto emp : m_Employees)
+	    {
+		delete emp;
+            }
             m_Employees.clear()
         }
 
