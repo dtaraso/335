@@ -59,7 +59,8 @@ public:
 	}
         
         virtual ~CManager () {
-            delete &CM;
+            //delete &CM;
+	    m_Group.clear();
         }
         // Get Function
 	string getDepartment() const {

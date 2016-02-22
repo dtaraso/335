@@ -52,7 +52,12 @@ public:
         }
         
         ~CDatabase () {
-            delete &CD;
+            //delete &CD;
+            for (auto emp : m_Employees)
+	    {
+		delete emp;
+            }
+            m_Employees.clear();
         }
 
 	//Add Employee into database
