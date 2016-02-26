@@ -1,18 +1,18 @@
 /* 
- * File:   StudentVectorSortbyGPA.h
+ * File:   EmployeeDatabaseSortbySalary.h
  * Author: Dasha
  *
- * Created on February 4, 2016, 1:47 PM
+ * Created on February 26, 2016, 4:51 PM
  */
 
-#ifndef STUDENTVECTORSORTBYGPA_H
-#define	STUDENTVECTORSORTBYGPA_H
-#include "StudentVectorSortable.h"
+#ifndef EMPLOYEEDATABASESORTBYSALARY_H
+#define	EMPLOYEEDATABASESORTBYSALARY_H
+#include "EmployeeDatabaseSortable.h"
 #include <iostream>
 
 using namespace std;
 
-class StudentVectorSortByGPA: public StudentVectorSortable {
+class EmployeeDatabaseSortBySalary: public EmployeeDatabaseSortable {
 public:
     //StudentVectorSortByGPA(vector <Student*> studentVector):
     //StudentVector(studentVector){};
@@ -27,5 +27,6 @@ public:
     
 };
 
-#endif	/* STUDENTVECTORSORTBYGPA_H */
+
+#endif	/* EMPLOYEEDATABASESORTBYSALARY_H */
 
