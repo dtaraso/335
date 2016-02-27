@@ -34,6 +34,9 @@ void DisplayRecords(){
         mRecords[i]->DisplayEmployee();
     }
 }
+CEmployee* getEmployee(int i ) const{
+		return mRecords[i];
+	}
 };
 
 #endif /* CDATABASE_H */
