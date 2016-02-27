@@ -11,11 +11,11 @@
 
 class EmployeeDatabaseSortByFirstName: public EmployeeDatabaseSortable {
     public: 
-        EmployeeDatabaseSortByFirstName(vector <Employee*> studentVector):
-    StudentVector(studentVector){};
+        EmployeeDatabaseSortByFirstName(vector <CEmployee*> employees):
+    EmployeeDatabaseSortable(employees){};
     
         virtual bool smaller(int i, int j) const {
-        if (getStudent(i)->getFirstName() < getStudent(j)->getFirstName())
+        if (getEmployee(i)->getFirstName() < getEmployee(j)->getFirstName())
             return true;
         else
             return false;
@@ -24,4 +24,3 @@ class EmployeeDatabaseSortByFirstName: public EmployeeDatabaseSortable {
 
 
 #endif	/* EMPLOYEEDATABASESORTBYFIRSTNAME_H */
-
