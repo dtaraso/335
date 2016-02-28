@@ -15,7 +15,7 @@ public:
 		EmployeeDatabaseSortable(employees) {};
 
 	virtual bool smaller(int i, int j) const {
-		if (getEmployee(i)->getFirstName() < getEmployee(j)->getFirstName())
+		if (getEmployee(i)->getLastName() < getEmployee(j)->getLastName())
 			return true;
 		else
 			return false;
