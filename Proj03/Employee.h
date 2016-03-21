@@ -13,11 +13,12 @@ protected:
 	string mLastName;
 	unsigned int mSalary;
 	tm mHiringYear;
+        unsigned int mID;
 
 public:
     //Constructor
-	Employee(string firstName, string lastName, unsigned int salary, tm yearHired) :
-		mFirstName(firstName), mLastName(lastName), mSalary(salary), mHiringYear(yearHired) {};
+	Employee(string firstName, string lastName, unsigned int salary, tm yearHired, unsigned int ID) :
+		mFirstName(firstName), mLastName(lastName), mSalary(salary), mHiringYear(yearHired), mID(ID) {};
 
     //Copy Constructor
 	Employee(const Employee& CE) {
@@ -25,6 +26,7 @@ public:
 		mLastName = CE.mLastName;
 		mSalary = CE.mSalary;
 		mHiringYear = CE.mHiringYear;
+                mID = CE.mID;
 	}
 
     //Assignment Operator
@@ -34,6 +36,7 @@ public:
 			mLastName = CE.mLastName;
 			mSalary = CE.mSalary;
 			mHiringYear = CE.mHiringYear;
+                        mID = CE.mID;
 		}
 		return *this;
 	}
@@ -43,7 +46,7 @@ public:
 
     //Prints elements of employees
 	virtual void DisplayEmployee() {
-		cout << mFirstName << " " << mLastName << "\t Salary:" << mSalary << "\t Hiring Year:" << mHiringYear.tm_year;
+		cout << mFirstName << " " << mLastName << "\t Salary:" << mSalary << "\t Hiring Year:" << mHiringYear.tm_year << "\t ID:" << mID;
 	}
     //returns first name
 	string getFirstName() const {
@@ -57,10 +60,17 @@ public:
 	tm getYearHired() const {
 		return mHiringYear;
 	}
+        
     //returns salary
 	unsigned short getSalary() const {
 		return mSalary;
 	}
+        
+    //returns ID
+        unsigned int getID() const {
+            return mID;
+        }
+        
     //sets first name
 	void setFirstName(const string firstName) {
 		mFirstName = firstName;
@@ -77,6 +87,10 @@ public:
 	void setSalary(const unsigned short salary) {
 		mSalary = salary;
 	}
+        
+        void setID(const unsigned int ID) {
+            mID = ID;
+        }
 };
 
 #endif /* EMPLOYEE_H */
