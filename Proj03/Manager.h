@@ -6,49 +6,41 @@
 
 class Manager : public Employee {
 protected:
-    //Initializes department name and vector of employees
-	string mDeptName;
-	vector<Employee*> mEmployees;
-        unsigned int mRank;
+	//Initializes Rank
+	unsigned int mRank;
 
 public:
-    //Constructor
+	//Constructor
 	Manager(const string &firstName, const string &lastName,
-		const unsigned short &salary, const tm &yearHired,
-		const int &rank, const vector<Employee*> &group) :
+		const unsigned short &salary, const int &yearHired, 
+		const int &rank, const unsigned int ID) :
 		Employee(firstName, lastName, salary, yearHired, ID) {
-		mEmployees = group;
-		mDeptName = departName;
-                mRank = rank;
+		mRank = rank;
 	}
 
-    //Copy Constructor
-	CManager(const Manager& CM) :Employee(CM) {
-		mDeptName = CM.mDeptName;
-		mEmployees=CM.mEmployees;
-                mRank = CM.mRank;
+	//Copy Constructor
+	Manager(const Manager& CM) :Employee(CM) {
+		mRank = CM.mRank;
 	}
-        
-    //Assignment Operator
+
+	//Assignment Operator
 	Manager& operator = (const Manager& CM) {
 		if (this != &CM) {
-			mDeptName = CM.mDeptName;
 			mRank = CM.mRank;
 		}
 		return *this;
 	}
-        
-    //Destructor
+
+	//Destructor
 	~Manager() {
 	}
-	
-    //Displays Employee aspects and department name of Manager
-	virtual void DisplayEmployee(){
-	Employee::DisplayEmployee();
-	cout<<"\t"<<mDeptName << "\t" << mRank; 
+
+	//Displays Employee aspects and department name of Manager
+	virtual void print() {
+		cout << "\t" << mFirstName << " " << mLastName << "\t Salary:" << mSalary << "\t Hiring Year:" << mHiringYear << "\t Rank:" << mRank<< "\t ID:" << mID;
 	}
+
+	virtual void Accept(Visitor*v) {};
 };
 
 #endif /* MANAGER_H */
-
-
