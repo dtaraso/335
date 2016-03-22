@@ -38,7 +38,7 @@ public:
 	//destructor
 	~Department() {}
 
-	string getDeptName() {
+	string getDeptName() const {
 		return mDeptName;
 	}
 
@@ -50,14 +50,25 @@ public:
 		mSubDepartments.push_back(dept);
 	}
 
+	vector<Unit*> getSubDepartments() const{
+		return mSubDepartments;
+	}
+
+	void setSubDepartments(vector<Unit*> &subDepts) {
+		mSubDepartments = subDepts;
+	}
+	//leave print function for print visitor
+	/*
 	virtual void print() {
 		cout << "Departmnet Name: " << mDeptName << endl;
 		for (auto dept : mSubDepartments) {
 			dept->print();
 		}
 	}
+	*/
 
 	virtual void Accept(Visitor* v) {
+		v->VisitDepartment(this);
 	}
 
 };
