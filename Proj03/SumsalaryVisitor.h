@@ -12,7 +12,7 @@
 #include "Visitor.h"
 
 class SumsalaryVisitor: public Visitor {
-public:
+protected:
 	unsigned int mSum = 0;
 public:
 	unsigned int getTotalSalary() { return mSum; }
