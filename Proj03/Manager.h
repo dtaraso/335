@@ -35,12 +35,23 @@ public:
 	~Manager() {
 	}
 
+	int getRank() {
+		return mRank;
+	}
+
+	void setRank(const int &rank) {
+		mRank = rank;
+	}
+	//leave print function for print visitor
 	//Displays Employee aspects and department name of Manager
+	/*
 	virtual void print() {
 		cout << "\t" << mFirstName << " " << mLastName << "\t Salary:" << mSalary << "\t Hiring Year:" << mHiringYear << "\t Rank:" << mRank<< "\t ID:" << mID;
 	}
-
-	virtual void Accept(Visitor*v) {};
+	*/
+	virtual void Accept(Visitor*v) {
+		v->VisitManager(this);
+	};
 };
 
 #endif /* MANAGER_H */
