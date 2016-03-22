@@ -13,10 +13,10 @@
 #include "Employee.h"
 
 class Group: public Unit {
-public:
+protected:
 	string mGroupName;
 	vector<Employee*> mEmployees;
-
+public:
 	//constructor
 	Group(string groupname) : mGroupName(groupname) {};
 
