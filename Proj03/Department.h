@@ -13,10 +13,10 @@
 #include "Unit.h"
 
 class Department: public Unit {
-public:
+protected:
 	string mDeptName;
 	vector<Unit*> mSubDepartments;
-
+public:
 	//constructor
 	Department(string name) : mDeptName(name) {};
 
