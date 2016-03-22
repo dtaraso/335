@@ -88,12 +88,16 @@ public:
 	void setID(const unsigned int ID) {
 		mID = ID;
 	}
-
+	//leave print function for print visitor
+	/*
 	virtual void print() {
 		cout << "\t\t" << mFirstName << " " << mLastName << "\t Salary:" << mSalary << "\t Hiring Year:" << mHiringYear << "\t ID:" << mID;
 	};
+	*/
 
-	virtual void Accept(Visitor*v) {};
+	virtual void Accept(Visitor*v) {
+		v->VisitEmployee(this);
+	};
 };
 
 #endif /* EMPLOYEE_H */
