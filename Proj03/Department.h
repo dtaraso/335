@@ -1,14 +1,66 @@
-/* 
- * File:   Department.h
- * Author: Dasha
- *
- * Created on March 20, 2016, 5:01 PM
- */
+/*
+* File:   Department.h
+* Author: Dasha
+*
+* Created on March 20, 2016, 5:01 PM
+*/
 
 #ifndef DEPARTMENT_H
 #define	DEPARTMENT_H
 
+#include <string>
+#include <vector>
+#include "Unit.h"
+
+class Department: public Unit {
+public:
+	string mDeptName;
+	vector<Unit*> mSubDepartments;
+
+	//constructor
+	Department(string name) : mDeptName(name) {};
+
+	//copy constructor
+	Department(const Department& dept) {
+		mDeptName = dept.mDeptName;
+		mSubDepartments = dept.mSubDepartments;
+	}
+
+	//Assignment Operator
+	Department& operator = (const Department& dept) {
+		if (this != &dept) {
+			mDeptName = dept.mDeptName;
+			mSubDepartments = dept.mSubDepartments;
+		}
+		return *this;
+	}
+
+	//destructor
+	~Department() {}
+
+	string getDeptName() {
+		return mDeptName;
+	}
+
+	void setDeptName(const string &deptname) {
+		mDeptName = deptname;
+	}
+
+	void addDepartmentMember(Unit* dept) {
+		mSubDepartments.push_back(dept);
+	}
+
+	virtual void print() {
+		cout << "Departmnet Name: " << mDeptName << endl;
+		for (auto dept : mSubDepartments) {
+			dept->print();
+		}
+	}
+
+	virtual void Accept(Visitor* v) {
+	}
+
+};
 
 
 #endif	/* DEPARTMENT_H */
-
