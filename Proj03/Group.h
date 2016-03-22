@@ -46,20 +46,28 @@ public:
 		mGroupName = gname;
 	}
 
+	vector<Employee*> getEmployees() {
+		return mEmployees;
+	}
+
+	void setEmployees(vector<Employee*> emps) {
+		mEmployees = emps;
+	}
 	void addGroupMember(Employee* group) {
 		mEmployees.push_back(group);
 	}
-
+	//leave print function for print visitor
+	/*
 	virtual void print() {
 		cout << "Group Name: "<< mGroupName << endl;
 		for (auto member : mEmployees) {
 			member->print();
 		}
-
 	}
+	*/
 
 	virtual void Accept(Visitor* v) {
-		cout << endl;
+		v->VisitGroup(this);
 	}
 };
 
