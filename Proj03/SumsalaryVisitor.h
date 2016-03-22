@@ -13,32 +13,36 @@
 
 class SumsalaryVisitor: public Visitor {
 public:
-	unsigned int mSum;
+	unsigned int mSum = 0;
 public:
-	double getTotalSalary() { return mSum; }
+	unsigned int getTotalSalary() { return mSum; }
 
-	virtual void VisitEmployee(Employee* emp) {
-		mSum += (emp->getSalary());
-	}
-
-	double restTotalSalary() {
+	void restTotalSalary() {
 		mSum = 0;
 	}
 
-	/*
+	
 	virtual void VisitEmployee(Employee* emp) {
-
+		mSum += (emp->getSalary());
 	}
 	virtual void VisitManager(Manager* man) {
-
+		mSum += (man->getSalary());
 	}
 	virtual void VisitGroup(Group* grp) {
-
+		SumsalaryVisitor sv;
+		for (auto unit : grp->getEmployees()) {
+			unit->Accept(&sv);
+		}
+		mSum += sv.getTotalSalary();
 	}
 	virtual void VisitDepartment(Department* dep) {
-
+		SumsalaryVisitor sv;
+		for (auto unit : dep->getSubDepartments()) {
+			unit->Accept(&sv);
+		}
+		mSum += sv.getTotalSalary();
 	}
-	*/
+	
 };
 
 #endif	/* SUMSALARYVISITOR_H */
