@@ -35,7 +35,7 @@ public:
 	~Manager() {
 	}
 
-	int getRank() {
+	int getRank() const{
 		return mRank;
 	}
 
