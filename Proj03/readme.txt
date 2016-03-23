@@ -3,5 +3,6 @@ Mustafa Jebara - jebaramu
 
 Contributions:
 	Daria:
-
+		UML Diagram, Employee, Manager, SumsalaryVisitor
 	Mustafa:
+		Group, Department, PrintVisitor
