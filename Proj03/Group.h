@@ -38,7 +38,7 @@ public:
 	//destructor
 	~Group() {}
 
-	string getGroupName() {
+	string getGroupName() const{
 		return mGroupName;
 	}
 
