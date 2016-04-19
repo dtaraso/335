@@ -14,10 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    addrecord.cpp
+    addrecord.cpp \
+    employee.cpp
 
-HEADERS  += mainwindow.h \
-    addrecord.h
+HEADERS  += \
+    addrecord.h \
+    employee.h \
+    employee_database.h \
+    mainwindow.h
 
 FORMS    += \
     addrecord.ui \
