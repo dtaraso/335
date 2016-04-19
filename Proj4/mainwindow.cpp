@@ -27,6 +27,6 @@ void MainWindow::on_AddButton_clicked()
     //newListener, SLOT(setValue(int)));
 }
 
-void MainWindow::addToolTable(CEmployee emp){
+void MainWindow::addToTable(CEmployee emp){
 
 }
