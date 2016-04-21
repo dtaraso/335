@@ -8,7 +8,6 @@ AddRecord::AddRecord(QWidget *parent) :
     ui(new Ui::AddRecord)
 {
     ui->setupUi(this);
-    //connect(this, SIGNAL(()),)
 }
 
 AddRecord::~AddRecord()
@@ -22,9 +21,6 @@ void AddRecord::on_buttonBox_accepted()
     string lname = ui->lineEdit_2->text().toStdString();
     int salary = ui->lineEdit_3->text().toInt();
     int year = ui->lineEdit_4->text().toInt();
-    CEmployee emp(fname,lname,salary,year);
+    CEmployee *emp = new CEmployee(fname,lname,salary,year);
     emit employeeAdded(emp);
-
-    //connect(ui)
-    //this->close();
 }
