@@ -31,10 +31,10 @@ class CEmployee{
         CEmployee(const CEmployee &CE) {
                 if(this != &CE)
                 {
-                    m_FirstName = CE.getFirstName();
-                    m_LastName = CE.getLastName();
-                    m_YearHired = CE.getYearHired();
-                    m_Salary = CE.getSalary();
+            m_FirstName = CE.getFirstName();
+            m_LastName = CE.getLastName();
+            m_YearHired = CE.getYearHired();
+            m_Salary = CE.getSalary();
                 }
         }
         //Assignment Operator
@@ -43,14 +43,13 @@ class CEmployee{
                 if (this != &CE)
                 {
                     m_FirstName = CE.getFirstName();
-            m_LastName = CE.getLastName();
-            m_YearHired = CE.getYearHired();
-            m_Salary = CE.getSalary();
+                    m_LastName = CE.getLastName();
+                    m_YearHired = CE.getYearHired();
+                    m_Salary = CE.getSalary();
                 }
                 return *this;
             }
-            ~CEmployee() {
-            }
+            ~CEmployee() {}
         string getFirstName() const {
             return m_FirstName;
         }
@@ -82,7 +81,11 @@ class CEmployee{
         void setSalary(const int salary) {
             m_Salary = salary;
         }
+
+
 };
+
+
 
 
 #endif // EMPLOYEE_H
