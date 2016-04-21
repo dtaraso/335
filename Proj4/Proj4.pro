@@ -14,14 +14,22 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    addrecord.cpp \
-    employee.cpp
+    addrecord.cpp
 
 HEADERS  += \
     addrecord.h \
     employee.h \
     employee_database.h \
-    mainwindow.h
+    mainwindow.h \
+    bubblesorttemplate.h \
+    bubblesortincreasing.h \
+    bubblesortdecreasing.h \
+    sortablevector.h \
+    employeedatabasesortable.h \
+    employeedatabasesortbyfirstname.h \
+    employeedatabasesortbylastname.h \
+    employeedatabasesortbyhireyear.h \
+    sort.h
 
 FORMS    += \
     addrecord.ui \
