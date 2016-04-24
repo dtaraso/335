@@ -22,7 +22,11 @@ void AbstractBuilder::createFile(vector<CEmployee*> emps)
     for (int i = 0; i < emps.size(); i++)
     {
         //txt_str << emps[i]->getFirstName();
-        txt_str << emps[i]->getFirstName() << op << emps[i]->getLastName() << txt_str << op << emps[i]->getSalary() << "\n";
+        txt_str << emps[i]->getLastName() << op;
+        txt_str << emps[i]->getFirstName() << op;
+        txt_str << emps[i]->getSalary() << op;
+        txt_str << emps[i]->getYearHired() << endl;
+        //txt_str << emps[i]->getFirstName() << op << emps[i]->getLastName() << txt_str << op << emps[i]->getSalary() << "\n";
                    //txt_str << op << emps[i]->getYearHired << "\n";
     }
 
