@@ -4,7 +4,10 @@
 #include <iostream>
 #include "sort.h"
 #include <algorithm>
-
+#include <fstream>
+#include "director.h"
+#include "tabdelimitedbuilder.h"
+#include "csvbuilder.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -44,69 +47,89 @@ void MainWindow::addToTable(CEmployee *emp){
 
 
 void MainWindow::sort_column(int i){
-    //i
-    //0 - fname
-    //1 - lname
-    //2 - salary
-    //3 - hiring year
-    //sort
-    //0 - ascending
-    //1 - descending
-    Qt::SortOrder sort = ui->tableWidget->horizontalHeader()->sortIndicatorOrder();
-    vector<CEmployee*> emp = this->empDatabase->getAllEmployees();
-    switch (i){
-        case 0:
-            {
-            if(sort == 0){
-                std::sort(emp.begin(), emp.end(), fnameAscending);
-            }
-            else{
-                std::sort(emp.begin(), emp.end(), fnameDescending);
-            }
-            break;
-        }
-        case 1:{
-            if(sort == 0){
-                 std::sort(emp.begin(), emp.end(), lnameAscending);
-            }
-            else{
-                std::sort(emp.begin(), emp.end(), lnameDescending);
-            }
-            break;
-        }
-        case 2:{
-            if(sort == 0){
-                std::sort(emp.begin(), emp.end(), salaryAscending);
-            }
-            else{
-                std::sort(emp.begin(), emp.end(), salaryDescending);
-            }
-            break;
-        }
-        case 3:{
-            if(sort == 0){
-                 std::sort(emp.begin(), emp.end(), yearAscending);
-            }
-            else{
-                 std::sort(emp.begin(), emp.end(), yearDescending);
-            }
-            break;
-        }
-        default:
-            cout << "ERROR" << endl;
-    }
-
-    //clearing table and databse
-    while (ui->tableWidget->rowCount() > 0)
+    if(this->empDatabase->getAllEmployees().size() > 0)
     {
-        ui->tableWidget->removeRow(0);
-    }
-    this->empDatabase->deleteAllEmployees();
+        //i
+        //0 - fname
+        //1 - lname
+        //2 - salary
+        //3 - hiring year
+        //sort
+        //0 - ascending
+        //1 - descending
+        Qt::SortOrder sort = ui->tableWidget->horizontalHeader()->sortIndicatorOrder();
+        vector<CEmployee*> emp = this->empDatabase->getAllEmployees();
+        switch (i){
+            case 0:
+                {
+                if(sort == 0){
+                    std::sort(emp.begin(), emp.end(), fnameAscending);
+                }
+                else{
+                    std::sort(emp.begin(), emp.end(), fnameDescending);
+                }
+                break;
+            }
+            case 1:{
+                if(sort == 0){
+                     std::sort(emp.begin(), emp.end(), lnameAscending);
+                }
+                else{
+                    std::sort(emp.begin(), emp.end(), lnameDescending);
+                }
+                break;
+            }
+            case 2:{
+                if(sort == 0){
+                    std::sort(emp.begin(), emp.end(), salaryAscending);
+                }
+                else{
+                    std::sort(emp.begin(), emp.end(), salaryDescending);
+                }
+                break;
+            }
+            case 3:{
+                if(sort == 0){
+                     std::sort(emp.begin(), emp.end(), yearAscending);
+                }
+                else{
+                     std::sort(emp.begin(), emp.end(), yearDescending);
+                }
+                break;
+            }
+            default:
+                cout << "ERROR" << endl;
+        }
 
-    //putting data back into table
-    for(unsigned int i = 0; i<emp.size(); i++){
-        addToTable(emp[i]);
+        //clearing table and databse
+        while (ui->tableWidget->rowCount() > 0)
+        {
+            ui->tableWidget->removeRow(0);
+        }
+        this->empDatabase->deleteAllEmployees();
+
+        //putting data back into table
+        for(unsigned int i = 0; i<emp.size(); i++){
+            addToTable(emp[i]);
+        }
     }
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    //vector<> substitute;
+    vector<CEmployee*> allEmps = this->empDatabase->getAllEmployees();
+    //std::ofstream txt_str;
+    TabDelimitedBuilder *td = new TabDelimitedBuilder;
+    CSVBuilder *cv = new CSVBuilder;
+    Director *dir = new Director;
+    //tab delimited file
+    dir->setAbstractBuilder(td);
+    dir->createFiles(allEmps);
+    //csv file
+    dir->setAbstractBuilder(cv);
+    dir->createFiles(allEmps);
+    cout << "adfadfa" << endl;
 }
 
 

@@ -14,7 +14,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    addrecord.cpp
+    addrecord.cpp \
+    abstractbuilder.cpp \
+    csvbuilder.cpp \
+    director.cpp \
+    tabdelimitedbuilder.cpp
 
 HEADERS  += \
     addrecord.h \
@@ -29,7 +33,11 @@ HEADERS  += \
     employeedatabasesortbyfirstname.h \
     employeedatabasesortbylastname.h \
     employeedatabasesortbyhireyear.h \
-    sort.h
+    sort.h \
+    abstractbuilder.h \
+    csvbuilder.h \
+    director.h \
+    tabdelimitedbuilder.h
 
 FORMS    += \
     addrecord.ui \

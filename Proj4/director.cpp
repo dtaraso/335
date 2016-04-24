@@ -2,14 +2,13 @@
 
 Director::Director()
 {
-protected:
-    AbstractBuilder* m_ab;
+
 }
 
-void setAbstractBuilder(AbstractBuilder* ab) {
+void Director::setAbstractBuilder(AbstractBuilder* ab) {
     m_ab = ab;
 }
 
-void createFiles(vector<Employee*> emps) {
+void Director::createFiles(vector<CEmployee*> emps) {
     m_ab->createFile(emps);
 }

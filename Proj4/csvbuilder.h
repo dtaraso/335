@@ -1,8 +1,10 @@
 #ifndef CSVBUILDER_H
 #define CSVBUILDER_H
 
+#include "abstractbuilder.h"
 
-class CSVBuilder
+
+class CSVBuilder : public AbstractBuilder
 {
 public:
     CSVBuilder();

@@ -19,7 +19,7 @@
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>411</width>
+      <width>421</width>
       <height>192</height>
      </rect>
     </property>
@@ -29,6 +29,9 @@
       <height>0</height>
      </size>
     </property>
+    <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+     <bool>true</bool>
+    </attribute>
     <column>
      <property name="text">
       <string>First Name</string>
