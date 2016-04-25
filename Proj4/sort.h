@@ -1,7 +1,7 @@
 #ifndef SORT_H
 #define SORT_H
 #include "employee.h"
-
+//used for sort algorithm in main window
 bool fnameAscending(const CEmployee *e1, const CEmployee *e2)
 {
    return e1->getFirstName() < e2->getFirstName();
